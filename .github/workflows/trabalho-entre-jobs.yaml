@@ -36,7 +36,7 @@ jobs:
           path: dir01
       
       - name: Conferindo se o arquivo foi baixando no job_02
-        run: ls -lha
+        run: ls -lha && ls -lha dir01
 
       - name: Acessando o arquivo gerado no job_01
         run: cat dir01/mensagem.txt
