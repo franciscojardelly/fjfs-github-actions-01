@@ -25,11 +25,11 @@ jobs:
 
       - name: Baixa a imagem Docker do dockerhub
         run: |
-          docker pull ${{ github.events.inputs.ValidarImagemDocker }}
+          docker pull ${{ github.event.inputs.ValidarImagemDocker }}
 
       - name: Listando a imagem já baixada
         run: |
-          IMAGE_NAME=$(echo "${{ github.events.inputs.ValidarImagemDocker }}" | cut -d ':' -f 1)
+          IMAGE_NAME=$(echo "${{ github.event.inputs.ValidarImagemDocker }}" | cut -d ':' -f 1)
           docker images | grep -i $IMAGE_NAME
 
       - name: Scan Image com Docker scout
