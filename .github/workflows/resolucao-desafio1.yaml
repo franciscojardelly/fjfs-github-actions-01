@@ -37,6 +37,4 @@ jobs:
         with:
           image: ${{ github.event.inputs.ValidarImagemDocker }}
           only-severities: critiacal,high
-          
-          
-  
+          command: cves,recommendations,compare
