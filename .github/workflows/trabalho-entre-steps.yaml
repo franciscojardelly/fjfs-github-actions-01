@@ -1,0 +1,22 @@
+name: Trabalho entre os steps dentro do mesmo job
+
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  WorksBetweenSteps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrando a versão do SO dentro do runners do git
+        run: cat /etc/os-release
+      
+      - name: Criando um arquivo de mensagem para ser lido no proximo step
+        run: echo "Olá, estou executando meu primeiro workflow no github actions" > mensagem.txt
+
+      - name: Listando diretório
+        run: ls -lha
+        
+      - name: Lê o conteúdo do arquivo criado acima
+        run: cat mensagem.txt

@@ -1,9 +1,10 @@
 name: Primeiro Workflow FJFS
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:    
+#   push:
+#     branches:
+#       - main
     
 jobs:
   ExibeVersaoRuners:
@@ -13,6 +14,4 @@ jobs:
         run: cat /etc/os-release
       
       - name: Mostra uma mensagem
-        run: echo "Olá, estou executando meu primeiro workflow no github actions"    
-        
-      
+        run: echo "Olá, estou executando meu primeiro workflow no github actions"
