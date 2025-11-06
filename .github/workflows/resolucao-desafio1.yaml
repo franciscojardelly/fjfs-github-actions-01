@@ -1,0 +1,40 @@
+name: Download and Security Scan imagem
+  
+on:
+  workflow_dispatch:
+    inputs:
+      ValidarImagemDocker:
+        description: 'Baixando e scaneando imagem docker'
+        required: false
+        default: 'nginx:latest'
+        type: string
+
+jobs:
+  pipeline-security:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker Login dockerhub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}  
+
+      - name: Baixa a imagem Docker do dockerhub
+        run: |
+          docker pull ${{ github.event.inputs.ValidarImagemDocker }}
+
+      - name: Listando a imagem já baixada
+        run: |
+          IMAGE_NAME=$(echo "${{ github.event.inputs.ValidarImagemDocker }}" | cut -d ':' -f 1)
+          docker images | grep -i $IMAGE_NAME
+
+      - name: Scan Image com Docker scout
+        uses: docker/scout-action@v1
+        with:
+          image: ${{ github.event.inputs.ValidarImagemDocker }}
+          only-severities: critiacal,high
+          command: cves,recommendations,compare
