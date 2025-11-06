@@ -1,0 +1,18 @@
+name: Primeiro Workflow FJFS
+
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  ExibeVersaoRuners:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrando a versão do SO dentro do runners do git
+        run: cat /etc/os-release
+      
+      - name: Mostra uma mensagem
+        run: echo Olá, estou executando meu primeiro workflow no github actions    
+        
+      
