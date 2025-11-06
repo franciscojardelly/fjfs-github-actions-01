@@ -39,4 +39,4 @@ jobs:
         run: ls -lha
 
       - name: Acessando o arquivo gerado no job_01
-        run: cat ${{ github.workspace}}/artifact/mensagem.txt
+        run: cat mensagem.txt
