@@ -13,6 +13,6 @@ jobs:
         run: cat /etc/os-release
       
       - name: Mostra uma mensagem
-        run: echo Olá, estou executando meu primeiro workflow no github actions    
+        run: echo "Olá, estou executando meu primeiro workflow no github actions"    
         
       
