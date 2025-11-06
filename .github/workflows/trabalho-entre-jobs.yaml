@@ -24,6 +24,7 @@ jobs:
           path: mensagem.txt
 
   job_02:
+    needs: job_01
     runs-on: ubuntu-latest
     steps:           
       - name: Listando diretório o arquivo gerando no job_01 ainda não está no job_02
