@@ -33,10 +33,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: artifact
-          path: mensagem.txt
+          path: dir01
       
       - name: Conferindo se o arquivo foi baixando no job_02
         run: ls -lha
 
       - name: Acessando o arquivo gerado no job_01
-        run: cat mensagem.txt
+        run: cat dir01/mensagem.txt
