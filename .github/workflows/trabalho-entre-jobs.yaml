@@ -1,0 +1,41 @@
+name: Trabalho entre os jobs diferentes
+
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  job_01:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrando a versão do SO dentro do runners do git
+        run: cat /etc/os-release
+      
+      - name: Criando um arquivo de mensagem para ser lido no proximo step
+        run: echo "Olá, estou executando meu primeiro workflow no github actions" > mensagem.txt
+
+      - name: Listando diretório
+        run: ls -lha
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: mensagem.txt
+
+  job_02:
+    runs-on: ubuntu-latest
+    steps:           
+      - name: Listando diretório o arquivo gerando no job_01 ainda não está no job_02
+        run: ls -lha
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: mensagem.txt
+      
+      - name: Conferindo se o arquivo foi baixando no job_02
+        run: ls -lha
+
+      - name: Acessando o arquivo gerado no job_01
+        run: cat ${{ github.workspace}}/artifact/mensagem.txt
