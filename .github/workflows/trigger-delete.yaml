@@ -1,0 +1,12 @@
+name: Testando a regra de delecao de uma nova branch ou tag no repositorio
+
+on:
+  delete
+
+jobs:
+  print-branch-or-tag-deleted:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Avisa sobre delecao de branch ou tag
+        run: echo "Este WKF foi triggado pois uma nova branch ou tag foi deletada"
