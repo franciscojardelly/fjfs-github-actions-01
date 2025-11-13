@@ -1,0 +1,12 @@
+name: Testando a regra de criacao de uma nova branch ou tag no repositorio
+
+on:
+  create
+
+jobs:
+  print-branch-or-tag-creation:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Avisa sobre criacao de branch ou tag
+        run: echo "Este WKF foi triggado pois uma nova branch ou tag foi criada"
