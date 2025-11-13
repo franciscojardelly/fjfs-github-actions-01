@@ -1,0 +1,12 @@
+name: Testando trigger de tipo deployment que eh acionada por uma chamada externa
+
+on:
+  deployment
+
+jobs:
+  deployment-trigger-external-call:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Recebeu uma chamada externa e executou
+        run: echo "acionado via external call - executando"
