@@ -1,0 +1,15 @@
+name: Workflow reutilizavel
+
+on:
+  workflow_call:
+    inputs:
+      nome-do-workflow:
+        required: true
+        type: string
+
+jobs:
+  exibe-mensagem-tete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibe mensgaem
+        run: echo "Mensagem de teste"          
