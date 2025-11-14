@@ -1,0 +1,16 @@
+name: Chamando workflow call
+
+on:
+  workflow_dispatch:
+    inputs:
+      exibir-mensagem:
+        required: true
+        type: string
+    
+jobs:
+  chama-wkf:
+      uses: ./.github/workflows/triggers-workflow-call.yaml
+      with:
+        nome-do-workflow: ${{ inputs.exibir-mensagem }}
+
+            
