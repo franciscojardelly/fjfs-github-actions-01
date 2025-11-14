@@ -1,0 +1,14 @@
+name: Workflow run
+
+on:
+  workflow_run:
+    workflows: [Run Tests]
+    types:
+      - completed
+
+jobs:
+  exibe-mensagem-tete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibe mensgaem
+        run: echo "WKF compartilhado terminal e chamou o WKF run"   
