@@ -2,7 +2,7 @@ name: Workflow run
 
 on:
   workflow_run:
-    workflows: [Run Tests]
+    workflows: [Workflow reutilizavel]
     types:
       - completed
 
